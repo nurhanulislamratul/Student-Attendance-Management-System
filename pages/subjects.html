@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects - Student Attendance System</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        .description-cell {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+        }
+
+        .description-cell:hover {
+            white-space: normal;
+            overflow: visible;
+            background-color: #fff;
+            position: absolute;
+            z-index: 1;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+
+        .actions-cell {
+            width: 100px;
+            text-align: center;
+        }
+
+        .btn-icon {
+            padding: 6px;
+            margin: 0 2px;
+        }
+
+        .btn-icon i {
+            font-size: 14px;
+        }
+
+        /* Adjust table layout */
+        table {
+            table-layout: fixed;
+        }
+
+        th:nth-child(1) { width: 15%; } /* Subject Code */
+        th:nth-child(2) { width: 25%; } /* Name */
+        th:nth-child(3) { width: 45%; } /* Description */
+        th:nth-child(4) { width: 15%; } /* Actions */
+    </style>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <i class="fas fa-user-graduate"></i>
+            Student Attendance
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="subjects.html" class="active"><i class="fas fa-book"></i> Subjects</a>
+            <a href="students.html"><i class="fas fa-users"></i> Students</a>
+            <a href="attendance.html"><i class="fas fa-clipboard-check"></i> Attendance</a>
+            <a href="records.html"><i class="fas fa-chart-bar"></i> Records</a>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <h2>Subjects</h2>
+                <button class="btn-primary" onclick="openModal('addSubjectModal')">
+                    <i class="fas fa-plus"></i> Add Subject
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subjectsTableBody">
+                        <!-- Subjects will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Subject Modal -->
+    <div id="addSubjectModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">×</button>
+            <div class="modal-header">
+                <h3><i class="fas fa-book-medical"></i> Add New Subject</h3>
+            </div>
+            <form id="addSubjectForm" class="modal-form">
+                <div class="form-group">
+                    <label for="subjectName">Subject Name</label>
+                    <input type="text" id="subjectName" name="subjectName" required placeholder="Enter subject name">
+                </div>
+                <div class="form-group">
+                    <label for="subjectCode">Subject Code</label>
+                    <input type="text" id="subjectCode" name="subjectCode" placeholder="Enter subject code (optional)">
+                </div>
+                <div class="form-group">
+                    <label for="subjectDescription">Description</label>
+                    <textarea id="subjectDescription" name="subjectDescription" rows="3" placeholder="Enter subject description"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('addSubjectModal')">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-check"></i> Add Subject
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/subjects.js"></script>
+    <script src="../js/messageDialog.js" defer></script>
+</body>
+</html>

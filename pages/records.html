@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Records - Student Attendance System</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <i class="fas fa-user-graduate"></i>
+            Student Attendance
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="subjects.html"><i class="fas fa-book"></i> Subjects</a>
+            <a href="students.html"><i class="fas fa-users"></i> Students</a>
+            <a href="attendance.html"><i class="fas fa-clipboard-check"></i> Attendance</a>
+            <a href="records.html" class="active"><i class="fas fa-chart-bar"></i> Records</a>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <h2>Attendance Records</h2>
+            </div>
+
+            <div class="filter-section record">
+                <div class="filter-group">
+                    <label>Subject</label>
+                    <select id="subjectFilter" class="form-select">
+                        <option value="">All Subjects</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Date Range</label>
+                    <div class="date-range">
+                        <input type="date" id="startDate" class="form-input" placeholder="Start Date">
+                        <span class="date-separator">to</span>
+                        <input type="date" id="endDate" class="form-input" placeholder="End Date">
+                    </div>
+                </div>
+                <div class="filter-group bottom">
+                    <button id="exportBtn" class="btn-primary">
+                        <i class="fas fa-download"></i> Export Records
+                    </button>
+                </div>
+            </div>
+
+            <div class="records-summary">
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="summary-info">
+                        <h4>Total Students</h4>
+                        <p id="totalStudentsCount">0</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="summary-info">
+                        <h4>Average Attendance</h4>
+                        <p id="averageAttendance">0%</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="summary-info">
+                        <h4>Total Classes</h4>
+                        <p id="totalClasses">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Subject</th>
+                            <th>Attendance</th>
+                            <th>Percentage</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recordsTableBody">
+                        <!-- Records will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Record Details Modal -->
+    <div id="recordDetailsModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">×</button>
+            <div id="recordDetailsContent"></div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/records.js"></script>
+</body>
+</html>

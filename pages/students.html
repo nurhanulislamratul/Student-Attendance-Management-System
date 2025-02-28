@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - Student Attendance System</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        .subjects-cell {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+        }
+
+        .subjects-cell:hover {
+            white-space: normal;
+            overflow: visible;
+            background-color: #fff;
+            position: absolute;
+            z-index: 1;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+
+        .actions-cell {
+            width: 100px;
+            text-align: center;
+        }
+
+        .btn-icon {
+            padding: 6px;
+            margin: 0 2px;
+        }
+
+        .btn-icon i {
+            font-size: 14px;
+        }
+
+        /* Adjust table layout */
+        table {
+            table-layout: fixed;
+        }
+
+        th:nth-child(1) { width: 15%; } /* Roll Number */
+        th:nth-child(2) { width: 25%; } /* Name */
+        th:nth-child(3) { width: 45%; } /* Subjects */
+        th:nth-child(4) { width: 15%; } /* Actions */
+
+        .subject-select-container {
+            margin-top: 15px;
+        }
+        
+        .subject-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .subject-checkbox {
+            display: grid;
+            align-items: center;
+            grid-template-columns: 18px auto;
+            gap: 8px;
+            padding: 5px;
+        }
+
+        .subject-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .subject-checkbox label {
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <i class="fas fa-user-graduate"></i>
+            Student Attendance
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="subjects.html"><i class="fas fa-book"></i> Subjects</a>
+            <a href="students.html" class="active"><i class="fas fa-users"></i> Students</a>
+            <a href="attendance.html"><i class="fas fa-clipboard-check"></i> Attendance</a>
+            <a href="records.html"><i class="fas fa-chart-bar"></i> Records</a>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <h2>Students</h2>
+                <button id="addStudentBtn" class="btn-primary">
+                    <i class="fas fa-plus"></i> Add Student
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Roll Number</th>
+                            <th>Name</th>
+                            <th>Subjects</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTableBody">
+                        <!-- Students will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Student Modal -->
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add Student</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <form id="studentForm">
+                <div class="form-group">
+                    <label for="studentName">Student Name</label>
+                    <input type="text" id="studentName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="rollNumber">Roll Number</label>
+                    <input type="text" id="rollNumber" class="form-input" required>
+                </div>
+                <div class="form-group subject-select-container">
+                    <label>Select Subjects</label>
+                    <div class="subject-checkboxes" id="subjectCheckboxes">
+                        <!-- Subject checkboxes will be populated here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn-primary" id="saveStudentBtn">
+                        <i class="fas fa-save"></i> Save Student
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/students.js"></script>
+    <script src="../js/messageDialog.js" defer></script>
+</body>
+</html>

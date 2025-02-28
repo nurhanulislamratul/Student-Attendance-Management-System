@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Student Attendance System</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <i class="fas fa-user-graduate"></i>
+            Student Attendance
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="subjects.html"><i class="fas fa-book"></i> Subjects</a>
+            <a href="students.html"><i class="fas fa-users"></i> Students</a>
+            <a href="attendance.html"><i class="fas fa-clipboard-check"></i> Attendance</a>
+            <a href="records.html"><i class="fas fa-chart-bar"></i> Records</a>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <h2>Dashboard</h2>
+            </div>
+
+            <!-- Welcome Message -->
+            <div class="welcome-message">
+                <h1>Welcome, <span id="teacherName">Teacher</span>!</h1>
+                <p class="current-date" id="currentDate"></p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Today's Attendance Card -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clipboard-check"></i> Today's Attendance</h3>
+                    </div>
+                    <div id="todayAttendance">
+                        <ul class="attendance-list" id="todayAttendanceList">
+                            <!-- Today's attendance will be populated here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Last Updated Card -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Last Updated</h3>
+                    </div>
+                    <div id="lastUpdated">
+                        <ul class="attendance-list" id="lastUpdatedList">
+                            <!-- Last updated records will be populated here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section recent-activity">
+            <div class="section-header">
+                <h2>Recent Activity</h2>
+                <div class="header-actions">
+                    <button id="refreshActivity" class="btn-primary">
+                        <i class="fas fa-sync"></i> Refresh
+                    </button>
+                </div>
+            </div>
+            <div id="recentActivity">
+                <ul class="activity-list" id="activityList">
+                    <!-- Recent activities will be populated here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
